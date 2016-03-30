@@ -3,6 +3,7 @@
 .*.sw[po]
 
 # java
+/target/
 *.class
  
 # Package Files #

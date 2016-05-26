@@ -6,12 +6,12 @@ package com.chen;
  */
 import java.util.Arrays;
 
+import org.apache.zookeeper.AsyncCallback.StatCallback;
 import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.KeeperException.Code;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
-import org.apache.zookeeper.AsyncCallback.StatCallback;
-import org.apache.zookeeper.KeeperException.Code;
 import org.apache.zookeeper.data.Stat;
 
 public class DataMonitor implements Watcher, StatCallback {
@@ -29,7 +29,7 @@ public class DataMonitor implements Watcher, StatCallback {
     byte prevData[];
 
     public DataMonitor(ZooKeeper zk, String znode, Watcher chainedWatcher,
-            DataMonitorListener listener) {
+            DataMonitorListener listener) throws KeeperException, InterruptedException {
         this.zk = zk;
         this.znode = znode;
         this.chainedWatcher = chainedWatcher;
@@ -37,6 +37,7 @@ public class DataMonitor implements Watcher, StatCallback {
         // Get things started by checking if the node exists. We are going
         // to be completely event driven
         zk.exists(znode, true, this, null);
+        zk.getChildren(znode, true);
     }
 
     /**
@@ -59,6 +60,7 @@ public class DataMonitor implements Watcher, StatCallback {
 
     public void process(WatchedEvent event) {
         String path = event.getPath();
+        System.out.println(event.getState().toString());
         if (event.getType() == Event.EventType.None) {
             // We are are being told that the state of the
             // connection has changed

@@ -1,0 +1,6 @@
+/core-site.xml
+/hdfs-site.xml
+/log4j.properties
+/mapred-site.xml
+/org/
+/yarn-site.xml

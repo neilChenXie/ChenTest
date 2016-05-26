@@ -34,7 +34,7 @@ implements Watcher, Runnable, DataMonitor.DataMonitorListener
 	Process child;
 
 	public Executor(String hostPort, String znode, String filename,
-			String exec[]) throws KeeperException, IOException {
+			String exec[]) throws KeeperException, IOException, InterruptedException {
 		this.filename = filename;
 		this.exec = exec;
 		zk = new ZooKeeper(hostPort, 3000, this);
@@ -67,7 +67,9 @@ implements Watcher, Runnable, DataMonitor.DataMonitorListener
 	 *
 	 * @see org.apache.zookeeper.Watcher#process(org.apache.zookeeper.proto.WatcherEvent)
 	 */
+	@Override
 	public void process(WatchedEvent event) {
+		System.out.println("Executor process enter!!!");
 		dm.process(event);
 	}
 
@@ -83,6 +85,7 @@ implements Watcher, Runnable, DataMonitor.DataMonitorListener
 	}
 
 	public void closing(int rc) {
+		System.out.println("closing myself");
 		synchronized (this) {
 			notifyAll();
 		}

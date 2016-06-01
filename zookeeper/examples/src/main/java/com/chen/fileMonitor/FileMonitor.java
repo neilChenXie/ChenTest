@@ -3,9 +3,6 @@ package com.chen.fileMonitor;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.filefilter.FileFilterUtils;
-import org.apache.commons.io.input.Tailer;
-import org.apache.commons.io.input.TailerListener;
 import org.apache.commons.io.monitor.FileAlterationListener;
 import org.apache.commons.io.monitor.FileAlterationMonitor;
 import org.apache.commons.io.monitor.FileAlterationObserver;
@@ -14,7 +11,7 @@ public class FileMonitor {
     
 	FileAlterationMonitor monitor = null;  
     
-    public FileMonitor(long interval) throws Exception {  
+    public FileMonitor(long interval) {  
         monitor = new FileAlterationMonitor(interval);  
     }  
   

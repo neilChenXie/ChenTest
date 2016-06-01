@@ -38,7 +38,6 @@ public class SetConfig implements Watcher
 	
 	@Override
 	public void process(WatchedEvent event) {
-		// TODO Auto-generated method stub
     			System.out.println("触发了事件路径："+event.getPath());
 	}
 

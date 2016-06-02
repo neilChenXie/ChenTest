@@ -16,14 +16,8 @@ public class FileObserver {
 	@Autowired
 	private FileAlterationListener fl;
 	
-	private String dirPath;
-	
-	private String fileName;
-	
 	public FileObserver() {
-		IOFileFilter ff = FileFilterUtils.and(FileFileFilter.FILE, new NameFileFilter(fileName));
-		ob = new FileAlterationObserver(dirPath, ff);
-		ob.addListener(fl);
+
 	}
 	
 	public FileObserver(String dirPath, String fileName) {

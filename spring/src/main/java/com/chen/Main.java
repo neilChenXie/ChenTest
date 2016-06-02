@@ -15,7 +15,7 @@ public class Main
     public static void main( String[] args )
     {
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring.xml");
-        FileObserver monitor = (FileObserver) ac.getBean("myOb");
-//        monitor.run();
+        FileAlterationMonitor monitor = (FileAlterationMonitor) ac.getBean("FileMonitor");
+        monitor.run();
     }
 }

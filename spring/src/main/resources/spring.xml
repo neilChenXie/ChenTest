@@ -8,16 +8,17 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <context:component-scan base-package="com.chen.*" />
+    <context:annotation-config />
+    <context:component-scan base-package="com.chen" />
     
-    <bean id="myOb" class="com.chen.observer.FileObserver">
-    	<property name="dirPath" value="/home/hadoop/test" />
-    	<property name="fileName" value="chen" />
+    <bean id="myOb" class="com.chen.observer.FileObserver" >
+    	<constructor-arg index="0" value="/home/hadoop/Chen/test/tmp" />
+    	<constructor-arg index="1" value="chen" />
     </bean>
     
-<!--     <bean id="FileMonitor" class="org.apache.commons.io.monitor.FileAlterationMonitor"> -->
-<!--     	<property name="interval" value="5000" /> -->
-<!--     	<property name="observers" ref="myOb" /> -->
-<!--     </bean> -->
+    <bean id="FileMonitor" class="org.apache.commons.io.monitor.FileAlterationMonitor">
+    	<constructor-arg index="0" value="5000" />
+    	<constructor-arg index="1" ref="myOb" />
+    </bean>
     
 </beans>

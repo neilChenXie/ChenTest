@@ -17,6 +17,7 @@ public class ObserverFactory {
 	
 	public static FileAlterationObserver getObserver(String dirPath, String fileName, FileAlterationListener fileListener) {
 		IOFileFilter ff = FileFilterUtils.and(FileFileFilter.FILE, new NameFileFilter(fileName));
+//		IOFileFilter ff = FileFilterUtils.and(FileFileFilter.FILE);
 		FileAlterationObserver ob = new FileAlterationObserver(dirPath, ff);
 		ob.addListener(fileListener);
 		return ob;

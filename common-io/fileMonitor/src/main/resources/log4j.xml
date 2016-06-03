@@ -10,7 +10,7 @@
 		</layout>
 	</appender>
 
-	<logger name="org.springframework" level="WARN" />
+	<logger name="org.springframework" level="debug" />
 	
 	<root>
 		<priority value="debug" />

@@ -6,23 +6,19 @@ import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.NameFileFilter;
 import org.apache.commons.io.monitor.FileAlterationListener;
 import org.apache.commons.io.monitor.FileAlterationObserver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FileObserver {
-	private FileAlterationObserver ob = null;
+public class ObserverFactory {
 	
-	@Autowired
-	private FileAlterationListener fl;
-	
-	public FileObserver() {
-
+	public ObserverFactory() {
+		
 	}
 	
-	public FileObserver(String dirPath, String fileName) {
+	public static FileAlterationObserver getObserver(String dirPath, String fileName, FileAlterationListener fileListener) {
 		IOFileFilter ff = FileFilterUtils.and(FileFileFilter.FILE, new NameFileFilter(fileName));
-		ob = new FileAlterationObserver(dirPath, ff);
-		ob.addListener(fl);
+		FileAlterationObserver ob = new FileAlterationObserver(dirPath, ff);
+		ob.addListener(fileListener);
+		return ob;
 	}
 }

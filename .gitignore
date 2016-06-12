@@ -1,6 +1,7 @@
 # general
 *.[oa] *~
 .*.sw[po]
+tags
 
 # java
 /target/

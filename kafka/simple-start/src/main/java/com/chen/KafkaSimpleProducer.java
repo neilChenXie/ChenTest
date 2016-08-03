@@ -28,7 +28,7 @@ public class KafkaSimpleProducer {
     Properties props = new Properties();
     
     //Assign localhost id
-    props.put("bootstrap.servers", "localhost:9092");
+    props.put("bootstrap.servers", "172.16.2.51:6667");
     
     //Set acknowledgements for producer requests.      
     props.put("acks", "all");
@@ -46,10 +46,10 @@ public class KafkaSimpleProducer {
     props.put("buffer.memory", 33554432);
     
     props.put("key.serializer", 
-       "org.apache.kafka.common.serializa-tion.StringSerializer");
+       "org.apache.kafka.common.serialization.StringSerializer");
        
     props.put("value.serializer", 
-       "org.apache.kafka.common.serializa-tion.StringSerializer");
+       "org.apache.kafka.common.serialization.StringSerializer");
     
     Producer<String, String> producer = new KafkaProducer<>(props);
           

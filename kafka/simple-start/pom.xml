@@ -8,7 +8,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>shiro-redis</name>
+	<name>kafka-simplestart</name>
 	<url><!--TODO:add--></url>
 	<description><!--TODO:add--></description>
 
